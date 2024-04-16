@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -21,15 +22,13 @@ import java.util.Set;
 @Entity
 public class Factura extends Base{
 
-    private Date fechaFacturacion;
-    private Long mpPaymentId;
-    private Long mpMerchantOrderId;
+    private LocalDate fechaFacturacion;
+    private Integer mpPaymentId;
+    private Integer mpMerchantOrderId;
     private String mpPreferenceId;
     private String mpPaymentType;
     private FormaPago formaPago;
-    private BigDecimal totalVenta;
+    private Double totalVenta;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private Set<DetalleFactura> detalleFacturas = new HashSet<>();
 
 }

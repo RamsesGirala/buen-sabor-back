@@ -19,27 +19,14 @@ public class ArticuloManufacturado extends Base{
     private String denominacion;
     private String descripcion;
     private Double precioVenta;
-    private Integer tiempoEstimado;
+    private Integer tiempoEstimadoMinutos;
 
-    @OneToMany(mappedBy = "articuloManufacturado")
-    private Set<ImagenManufacturado> imagenArticuloManufacturado;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "unidadManufacturado_id")
-    private UnidadManufacturado unidadManufacturado;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "categoriaArticuloManufacturado_id")
-    private CategoriaArticuloManufacturado categoriaArticuloManufacturado;
+    @OneToOne
+    private Imagen imagen;
 
     @ManyToOne
-    private ArticuloInsumo articuloInsumo;
+    private UnidadMedida unidadMedida;
 
     @ManyToMany(mappedBy = "articuloManufacturados")
-    private Set<Promocion> promociones = new HashSet<>();
-
-    public Double stockCalculado(){
-        return null;
-    }
-
+    private Set<Promocion> estaEnPromociones = new HashSet<>();
 }

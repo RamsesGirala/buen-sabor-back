@@ -19,17 +19,16 @@ public class ArticuloInsumo extends Base{
     private String denominacion;
     private Double precioCompra;
     private Double precioVenta;
-    private Double stockActual;
-    private Double stockMaximo;
+    private Integer stockActual;
+    private Integer stockMaximo;
     private Boolean esParaElaborar;
 
     @ManyToOne
-    @JoinColumn(name = "unidadMedida_id")
     private UnidadMedida unidadMedida;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private ImagenInsumo imagenInsumo;
+    @OneToOne
+    private Imagen imagen;
 
-    @OneToMany(mappedBy = "articuloInsumo")
-    private Set<CategoriaArticulo> categoriaArticulos = new HashSet<>();
+    @ManyToMany(mappedBy = "articulosInsumos")
+    private Set<Promocion> estaEnPromociones = new HashSet<>();
 }

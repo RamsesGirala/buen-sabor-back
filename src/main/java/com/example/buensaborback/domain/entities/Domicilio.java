@@ -21,10 +21,6 @@ public class Domicilio extends Base{
     private Integer cp;
 
     @ManyToOne
-    @JoinColumn(name = "localidad_id")
     private Localidad localidad;
-
-    @OneToOne(mappedBy = "domicilio")
-    private Sucursal sucursal;
 
 }

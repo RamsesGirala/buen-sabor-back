@@ -22,9 +22,6 @@ public class Localidad extends Base{
     private String nombre;
 
     @ManyToOne
-    @JoinColumn(name = "provincia_id")
     private Provincia provincia;
 
-    @OneToMany(mappedBy = "localidad")
-    private Set<Domicilio> domicilios = new HashSet<>();
 }

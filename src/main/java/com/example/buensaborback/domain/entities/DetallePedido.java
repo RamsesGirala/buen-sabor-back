@@ -1,13 +1,11 @@
 package com.example.buensaborback.domain.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.math.BigDecimal;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,12 +14,12 @@ import java.math.BigDecimal;
 @Entity
 public class DetallePedido extends Base{
 
-    private BigDecimal cantidad;
-    private BigDecimal subTotal;
+    private Integer cantidad;
+    private Double subTotal;
 
-    @ManyToOne
+    @OneToOne
     private ArticuloManufacturado articuloManufacturado;
 
-    @ManyToOne
+    @OneToOne
     private ArticuloInsumo articuloInsumo;
 }

@@ -19,7 +19,4 @@ public class UnidadMedida extends Base{
 
     private String denominacion;
 
-    @OneToMany(mappedBy = "unidadMedida")
-    private Set<ArticuloInsumo> articuloInsumos = new HashSet<>();
-
 }

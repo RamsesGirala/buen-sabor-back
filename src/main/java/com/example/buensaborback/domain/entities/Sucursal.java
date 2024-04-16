@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,17 +18,21 @@ import java.util.Set;
 public class Sucursal extends Base{
 
     private String nombre;
-    private String horarioApertura;
-    private String horarioCierre;
-
-    @ManyToOne
-    @JoinColumn(name = "empresa_id")
-    private Empresa empresa;
+    private LocalTime horarioApertura;
+    private LocalTime horarioCierre;
 
     @OneToOne
-    @JoinColumn(name = "domicilio_id")
     private Domicilio domicilio;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private Set<CategoriaArticuloManufacturado> categoriaArticuloManufacturados = new HashSet<>();
+    //SE AGREGA EL JOIN COLUMN PARA QUE JPA NO CREE LA TABLA INTERMEDIA EN UNA RELACION ONE TO MANY
+    //DE ESTA MANERA PONE EL FOREIGN KEY 'sucursal_id' EN LA TABLA DE LOS MANY
+    @OneToMany
+    @JoinColumn(name = "sucursal_id")
+    private Set<Categoria> categorias = new HashSet<>();
+
+    //SE AGREGA EL JOIN COLUMN PARA QUE JPA NO CREE LA TABLA INTERMEDIA EN UNA RELACION ONE TO MANY
+    //DE ESTA MANERA PONE EL FOREIGN KEY 'sucursal_id' EN LA TABLA DE LOS MANY
+    @OneToMany
+    @JoinColumn(name = "sucursal_id")
+    private Set<Promocion> promociones = new HashSet<>();
 }
